@@ -4,8 +4,8 @@ import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import { useAppSelector } from "../../../hooks/useAppSelector";
 import { guessLetter } from "../../../store/gameSlice";
 
-const ALPHABET = "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789".split("");
 
+const ALPHABET = "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789".split("");
 
 export default function LetterInput() {
   const dispatch = useAppDispatch();
@@ -13,19 +13,13 @@ export default function LetterInput() {
   const questions = useAppSelector((s) => s.questions.list);
   const currentId = useAppSelector((s) => s.game?.currentQuestionId);
 
-  
-  console.log({ guessed, questions, currentId });
-
-  
   const current = useMemo(
     () => questions.find((q) => q?.id === currentId),
     [questions, currentId]
   );
 
-  
   const answer: string = useMemo(() => {
     const raw = current?.answer ?? "";
-   
     return String(raw).toUpperCase();
   }, [current]);
 
@@ -36,10 +30,9 @@ export default function LetterInput() {
   };
 
   return (
-    <div style={{ marginTop: 12 }}>
-      <div style={{ marginBottom: 8 }}>Тамгаларды тап:</div>
+    <div className="letter-input-container">
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 2, maxWidth: 500}}>
+      <div className="letter-buttons">
         {ALPHABET.map((l) => {
           const disabled = guessed.includes(l);
           const isCorrect = answer.includes(l);

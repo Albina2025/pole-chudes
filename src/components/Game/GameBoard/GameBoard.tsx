@@ -24,13 +24,6 @@ export default function GameBoard() {
 
   const wrongLetters = guessed.filter((l) => !answer.includes(l));
 
-  const revealed = answer
-    .split("")
-    .map((ch) => {
-      if (ch === " ") return " ";
-      return guessed.includes(ch) ? ch : "_";
-    })
-    .join(" ");
 
   const isWin =
     game.fullAnswer &&
@@ -74,40 +67,13 @@ export default function GameBoard() {
           );
         })}
       </div>
-
-     
-      <div style={{ marginTop: 16 }}>
-        <h3>Сөз:</h3>
-        <div
-          style={{
-            fontSize: 28,
-            letterSpacing: 4,
-            padding: 12,
-            border: "1px solid #eee",
-            borderRadius: 6,
-            display: "inline-block",
-            minWidth: 300,
-            textAlign: "center",
-            background: "#fff",
-          }}
-        >
-          {revealed}
-        </div>
-      </div>
-
-      {/* Статистика */}
-      <div style={{ marginTop: 12 }}>
-        <div>Туура эмес: {wrongLetters.join(", ") || "-"}</div>
-        <div>Калганы: {Math.max(0, 6 - wrongLetters.length)}</div>
-      </div>
-
    
       {isWin && (
         <div style={{ marginTop: 16, color: "green" }}>
           <h3>Сен жеңдиң!</h3>
           <div>Жооп: {answer}</div>
           <button
-            style={{ marginTop: 8 }}
+            style={{ margin: 15, fontSize: 15 }}
             onClick={pickRandomQuestion}
           >
             Кийинки суроо
@@ -120,10 +86,11 @@ export default function GameBoard() {
         <div style={{ marginTop: 16, color: "red" }}>
           <h3>Утулдуң</h3>
           <div>Жооп: {answer}</div>
-          <button onClick={pickRandomQuestion}>Кийинки суроо</button>
-          <button onClick={() => dispatch(resetGame())} style={{ marginLeft: 8 }}>
+          <button style={{ margin: 15, fontSize: 15 }} 
+            onClick={pickRandomQuestion}>Кийинки суроо</button>
+          {/* <button  onClick={() => dispatch(resetGame())} style={{ marginLeft: 8, fontSize: 15}}>
             Restart
-          </button>
+          </button> */}
         </div>
       )}
 
@@ -134,13 +101,20 @@ export default function GameBoard() {
           <WordInput />
         </>
       )}
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <button className="btn" onClick={pickRandomQuestion}>
+          Суроону жаңылоо
+        </button>
 
-      <div style={{ marginTop: 18 }}>
-        <button onClick={pickRandomQuestion}>Тандоону жаңылоо</button>
-        <button onClick={() => dispatch(resetGame())} style={{ marginLeft: 8 }}>
-          Reset
+        <button
+          className="btn"
+          onClick={() => dispatch(resetGame())}
+          style={{ marginLeft: 8 }}
+        >
+          Кайра баштоо
         </button>
       </div>
+
     </div>
   );
 }

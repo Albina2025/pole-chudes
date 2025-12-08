@@ -33,7 +33,7 @@ export const AdminPageForm = () => {
 
 
   return (
-    <div style={{ padding: 30 }}>
+    <div style={{ padding: 30, width: "70%" }}>
       <h2>Суроолорду башкаруу (CRUD)</h2>
 
       <Input

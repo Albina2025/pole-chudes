@@ -15,11 +15,10 @@ export default function WordInput() {
   };
 
   return (
-    <div style={{ marginTop: 12 }}>
-      <div style={{ marginBottom: 8 }}>Толук сөз менен баштап көрүңүз:</div>
-      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-        <Input value={val} onChange={setVal} placeholder="Толук жооп" />
-        <Button onClick={onTry}>Сынап көрүү</Button>
+    <div style={{ marginTop: 12, width: "50%" }}>
+      <div style={{ display: "flex", gap: 8, alignItems: "center"}}>
+        <Input value={val} onChange={setVal} placeholder="Жоопту киргизүү" />
+        <Button onClick={onTry}>Текшерүү</Button>
       </div>
     </div>
   );
