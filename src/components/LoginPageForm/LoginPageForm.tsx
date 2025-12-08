@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Input from "../components/UI/Input";
-import Button from "../components/UI/Button";
-import { useAppDispatch } from "../hooks/useAppDispatch";
-import { login } from "../store/authSlice";
+import Input from "../../components/UI/Input";
+import Button from "../../components/UI/Button";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { login } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 
-export default function LoginPage() {
+export const LoginPageForm = () => {
   const [loginV, setLoginV] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useAppDispatch();

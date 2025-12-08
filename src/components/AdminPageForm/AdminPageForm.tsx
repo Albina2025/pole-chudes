@@ -1,17 +1,19 @@
-import { useState } from "react";
-import Input from "../components/UI/Input";
-import Button from "../components/UI/Button";
-import { useAppSelector } from "../hooks/useAppSelector";
-import { useAppDispatch } from "../hooks/useAppDispatch";
-import { addQuestion, deleteQuestion } from "../store/questionsSlice";
+import React, { useState } from "react";
+import Input from "../../components/UI/Input";
+import Button from "../../components/UI/Button";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { addQuestion, deleteQuestion } from "../../store/questionsSlice";
+import { useNavigate } from "react-router-dom";
 
 
-export default function AdminPage() {
+export const AdminPageForm = () => {
   const dispatch = useAppDispatch();
   const questions = useAppSelector((s) => s.questions.list);
 
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+  const navigate = useNavigate();
 
   const handleAdd = () => {
     dispatch(
@@ -24,6 +26,11 @@ export default function AdminPage() {
     setQuestion("");
     setAnswer("");
   };
+
+   const goToGame = () => {
+    navigate("/game");
+  };
+
 
   return (
     <div style={{ padding: 30 }}>
@@ -65,8 +72,10 @@ export default function AdminPage() {
           >
             Өчүрүү
           </Button>
+
         </div>
       ))}
+      <Button onClick={goToGame}>Go to Game</Button>
     </div>
   );
 }

@@ -41,3 +41,4 @@ const gameSlice = createSlice({
 export const { setQuestion, guessLetter, guessWord, resetGame } = gameSlice.actions;
 export default gameSlice.reducer;
 
+

@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import LoginPage from "../pages/LoginPage";
-import GamePage from "../pages/GamePage";
-import AdminPage from "../pages/AdminPage";
-import NotFoundPage from "../pages/NotFoundPage";
+import {LoginPage} from "../pages/LoginPage/LoginPage";
+import {GamePage} from "../pages/GamePage/GamePage";
+import {AdminPage} from "../pages/AdminPage/AdminPage";
+import {NoteFoundPage} from "../pages/NoteFountPage/NoteFoundPage";
 import { useAppSelector } from "../hooks/useAppSelector";
 
 export default function AppRouter() {
@@ -23,7 +23,7 @@ export default function AppRouter() {
           element={isAdmin ? <GamePage /> : <Navigate to="/login" />}
         />
 
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<NoteFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

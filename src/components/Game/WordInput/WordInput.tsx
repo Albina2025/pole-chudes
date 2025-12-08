@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Input from "../UI/Input";
-import Button from "../UI/Button";
-import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { guessWord } from "../../store/gameSlice";
+import Input from "../../UI/Input";
+import Button from "../../UI/Button";
+import { useAppDispatch } from "../../../hooks/useAppDispatch";
+import { guessWord } from "../../../store/gameSlice";
 
 export default function WordInput() {
   const [val, setVal] = useState("");

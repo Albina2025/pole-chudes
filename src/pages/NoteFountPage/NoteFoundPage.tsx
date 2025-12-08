@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function NotFoundPage() {
+export const NoteFoundPage = () => {
   return (
     <div style={{ padding: 40, textAlign: "center" }}>
       <h2>404 — Табылбады</h2>

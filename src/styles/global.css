@@ -7,11 +7,11 @@ body {
 .btn {
   padding: 10px 20px;
   border: none;
-  background: #333;
+  background: #979696;
   color: #fff;
   border-radius: 6px;
   cursor: pointer;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .btn:disabled {
