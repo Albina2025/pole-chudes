@@ -27,18 +27,20 @@ const slice = createSlice({
   reducers: {
     addQuestion(state, action) {
       state.list.push(action.payload);
-      localStorage.setItem("questions", JSON.stringify(state.list)); 
+      localStorage.setItem("questions", JSON.stringify(state.list));
     },
+
     deleteQuestion(state, action) {
       state.list = state.list.filter((q) => q.id !== action.payload);
-      localStorage.setItem("questions", JSON.stringify(state.list)); 
+      localStorage.setItem("questions", JSON.stringify(state.list));
     },
+
     updateQuestion(state, action) {
       const updated = action.payload;
       state.list = state.list.map((q) =>
         q.id === updated.id ? updated : q
       );
-      localStorage.setItem("questions", JSON.stringify(state.list)); 
+      localStorage.setItem("questions", JSON.stringify(state.list));
     },
   },
 });

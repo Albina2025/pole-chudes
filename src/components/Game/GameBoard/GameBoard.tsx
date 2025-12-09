@@ -31,7 +31,7 @@ export default function GameBoard() {
       ? true
       : uniqueLetters.every((l) => guessed.includes(l));
 
-  const isLose = wrongLetters.length >= 6;
+  const isLose = wrongLetters.length >= 3;
 
   const pickRandomQuestion = useCallback(() => {
     if (questions.length === 0) return;
@@ -79,6 +79,13 @@ export default function GameBoard() {
           );
         })}
       </div>
+
+      {wrongLetters.length > 0 && (
+        <div style={{ marginTop: 10, color: "red", minHeight: 24 }}>
+          Ката тамгалар: {wrongLetters.join(", ")}
+        </div>
+      )}
+
    
       {isWin && (
         <div style={{ marginTop: 16, color: "green" }}>
@@ -100,9 +107,6 @@ export default function GameBoard() {
           <div>Жооп: {answer}</div>
           <button style={{ margin: 15, fontSize: 15 }} 
             onClick={pickRandomQuestion}>Кийинки суроо</button>
-          {/* <button  onClick={() => dispatch(resetGame())} style={{ marginLeft: 8, fontSize: 15}}>
-            Restart
-          </button> */}
         </div>
       )}
 
@@ -130,3 +134,4 @@ export default function GameBoard() {
     </div>
   );
 }
+

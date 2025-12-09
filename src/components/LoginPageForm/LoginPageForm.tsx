@@ -11,7 +11,8 @@ export const LoginPageForm = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const doLogin = () => {
+  const doLogin = (e: React.FormEvent) => {
+    e.preventDefault(); 
     dispatch(login({ login: loginV, password }));
     navigate("/admin");
   };
@@ -19,12 +20,11 @@ export const LoginPageForm = () => {
   return (
     <div style={{ width: 300, margin: "100px auto" }}>
       <h2>Админ кирүү</h2>
-
-      <Input value={loginV} onChange={setLoginV} placeholder="Логин" />
-      <Input value={password} onChange={setPassword} placeholder="Пароль" type="password" />
-
-      <Button onClick={doLogin}>Кирүү</Button>
+      <form onSubmit={doLogin}>
+        <Input value={loginV} onChange={setLoginV} placeholder="Логин" />
+        <Input value={password} onChange={setPassword} placeholder="Пароль" type="password" />
+        <Button type="submit">Кирүү</Button>
+      </form>
     </div>
   );
-}
-
+};
