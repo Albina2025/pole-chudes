@@ -1,11 +1,9 @@
-import { Link } from "react-router-dom";
+import { NoteFoundPageForm } from "../../components/NotFounPageForm";
 
 export const NoteFoundPage = () => {
   return (
-    <div style={{ padding: 40, textAlign: "center" }}>
-      <h2>404 — Табылбады</h2>
-      <p>Жол туура эмес.</p>
-      <Link to="/login">Кайра кирүү</Link>
-    </div>
+    <>
+      <NoteFoundPageForm/>
+    </>
   );
 }

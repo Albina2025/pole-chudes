@@ -1,7 +1,7 @@
 import  { useMemo, useEffect, useCallback } from "react";
 import { useAppSelector } from "../../../hooks/useAppSelector";
 import { useAppDispatch } from "../../../hooks/useAppDispatch";
-import { setQuestion, resetGame } from "../../../store/gameSlice";
+import { setQuestion, resetGame, guessLetter } from "../../../store/gameSlice";
 import LetterInput from "../LetterInput/LetterInput";
 import WordInput from "../WordInput/WordInput";
 import QuestionBox from "../QuestionBox/QuestionBox";
@@ -38,6 +38,18 @@ export default function GameBoard() {
     const idx = Math.floor(Math.random() * questions.length);
     dispatch(setQuestion(questions[idx].id));
   }, [questions, dispatch]);
+
+    useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      const key = e.key.toUpperCase();
+      if (/^[А-ЯЁ0-9]$/.test(key)) {
+        dispatch(guessLetter(key));
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [dispatch]);
 
   useEffect(() => {
     if (!game.currentQuestionId && questions.length > 0) {

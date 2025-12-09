@@ -30,6 +30,7 @@ const gameSlice = createSlice({
     guessWord(state, action:  {payload:string}) {
       state.fullAnswer = action.payload.toUpperCase();
     },
+
     resetGame(state) {
       state.currentQuestionId = null;
       state.guessedLetters = [];

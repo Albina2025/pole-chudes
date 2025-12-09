@@ -1,1 +1,1 @@
-export {NoteFoundPageForm} from "./NoteFoundPage";
+export {NoteFoundPageForm} from "./NoteFoundPageForm";
